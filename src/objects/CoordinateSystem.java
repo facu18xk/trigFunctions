@@ -1,7 +1,8 @@
 package objects;
 
 import java.awt.Color;
-
+import uwcse.io.AudioPlayer;
+import uwcse.io.Sound;
 import uwcse.graphics.GWindow;
 import uwcse.graphics.Line;
 
@@ -67,20 +68,23 @@ public class CoordinateSystem {
     // is sixteen pixels away from the image center
     int x2 = window.getWindowWidth() - lateralMargin - TEN;
     int y2 = getCenterY();
-
+    Sound sound = new Sound("src/assets/sounds/jedi.wav");
+    AudioPlayer player = new AudioPlayer();
+    player.play(sound);
     drawLine(x1, y1, x2, y2, CYAN, false, window);
   }
 
   private void renderYaxis(GWindow window) {
     final int TWELVE = 12;
     final int FIVE = 5;
+    final int DELTA_Y = 29;
     // Substracting 5 because the background image is not perfectly simetric
     int verticalMargin = (window.getWindowHeight() - height) / TWO;
     setCenterX(window.getWindowWidth() / TWO - FIVE);
     int x1 = getCenterX();
     int y1 = verticalMargin - TWELVE;
     int x2 = getCenterX();
-    int y2 = window.getWindowHeight() - (verticalMargin + 29);
+    int y2 = window.getWindowHeight() - (verticalMargin + DELTA_Y);
     drawLine(x1, y1, x2, y2, PINK, true, window);
   }
 

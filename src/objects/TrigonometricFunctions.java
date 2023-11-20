@@ -81,7 +81,7 @@ public class TrigonometricFunctions {
   }
 
   public void sec(int radius, int width, int height, int deltaX, int deltaY) {
-    int x2 = (int) (Math.cos(ANGLE) * radius * 2) + x;
+    int x2 = (int) (Math.cos(ANGLE) * radius * TWO) + x;
     secImg = new Picture("sec.png", width, height, window);
     bracketSec = new Bracket(x, y + BRACKET_MARGIN, x2, y + BRACKET_MARGIN, false, false, CYAN);
     bracketSec.addTo(window);

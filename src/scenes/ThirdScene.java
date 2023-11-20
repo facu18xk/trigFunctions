@@ -5,8 +5,8 @@ import uwcse.graphics.GWindow;
 
 public class ThirdScene {
   public ThirdScene(int height, int width) {
-    centerX = width / 2;
-    centerY = height / 2;
+    centerX = width / TWO;
+    centerY = height / TWO;
   }
 
   public void play(GWindow window) {
@@ -44,6 +44,7 @@ public class ThirdScene {
   }
 
   // Index
+  private final int TWO = 2;
   private final int DELAY = 3000;
   private final int WIDTH_IMG = 80;
   private final int HEIGHT_IMG = 37;

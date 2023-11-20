@@ -16,18 +16,20 @@ public class TrigonometricCirunference {
     final int TWO = 2;
     final int FIFTEEN = 15;
     final int FOUR = 4;
+    final int GROTW_FACTOR = 3;
+    final int DELAY = 30;
     int x = window.getWindowWidth() / TWO - width / TWO - FOUR;
     // The four is beucause the center of the window is not the center of the canvas
     // and the canvas is 4 pixels away for the window center
     int y = window.getWindowHeight() / TWO - height / TWO - FIFTEEN;
     // The window's center is 15 pixels away from the canvas center
     Arc arc;
-    for (int i = 0; i < KEY_FRAMES; i += 2) {
-      arc = new Arc(x, y, width, height, 0, i * 3, Color.white, false);
+    for (int i = 0; i < KEY_FRAMES; i += TWO) {
+      arc = new Arc(x, y, width, height, 0, i * GROTW_FACTOR, Color.white, false);
 
       arc.addTo(window);
       try {
-        Thread.sleep(30);
+        Thread.sleep(DELAY);
       } catch (Exception e) {
       }
     }
