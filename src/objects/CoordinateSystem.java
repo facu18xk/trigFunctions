@@ -1,33 +1,82 @@
 package objects;
 
+/**
+ * The Coordinate System class represents a coordinate system in a graphics window.
+ * It provides methods to set the properties of the coordinate system, such as center and size,
+ * and render the coordinate axes in the specified graphics window.
+ * 
+ * The coordinate system is drawn with animated growth of lines to create a visual effect.
+ * 
+ * @author Facundo Garay
+ * @version 1.0
+ */
 import java.awt.Color;
-import uwcse.io.AudioPlayer;
-import uwcse.io.Sound;
+
 import uwcse.graphics.GWindow;
 import uwcse.graphics.Line;
+import uwcse.io.AudioPlayer;
+import uwcse.io.Sound;
 
 public class CoordinateSystem {
+  /**
+   * Constructs a new coordinate system with the specified width and height.
+   *
+   * @param width  the width of the coordinate system
+   * @param height the height of the coordinate system
+   */
   public CoordinateSystem(int width, int height) {
     this.width = width;
     this.height = height;
   }
 
+  /**
+   * Gets the x-coordinate of the center of the coordinate system.
+   *
+   * @return the x-coordinate of the center
+   */
   public int getCenterX() {
     return centerX;
   }
 
+  /**
+   * Sets the x-coordinate of the center of the coordinate system.
+   *
+   * @param centerX the x-coordinate of the center
+   */
   public void setCenterX(int centerX) {
     this.centerX = centerX;
   }
 
+  /**
+   * Gets the y-coordinate of the center of the coordinate system.
+   *
+   * @return the y-coordinate of the center
+   */
   public int getCenterY() {
     return centerY;
   }
 
+  /**
+   * Sets the y-coordinate of the center of the coordinate system.
+   *
+   * @param centerY the y-coordinate of the center
+   */
   public void setCenterY(int centerY) {
     this.centerY = centerY;
   }
 
+  /**
+   * Draws a line with animated growth in the specified graphics window.
+   *
+   * @param x1             the x-coordinate of the starting point of the line
+   * @param y1             the y-coordinate of the starting point of the line
+   * @param x2             the x-coordinate of the ending point of the line
+   * @param y2             the y-coordinate of the ending point of the line
+   * @param color          the color of the line
+   * @param growthVertical {@code true} if the line grows vertically,
+   *                       {@code false} if horizontally
+   * @param window         the graphics window to draw the line
+   */
   private void drawLine(int x1, int y1, int x2, int y2, java.awt.Color color, boolean growthVertical, GWindow window) {
     final double GROWTH_FACTOR = 0.25;
     Line line;
@@ -55,6 +104,11 @@ public class CoordinateSystem {
 
   }
 
+  /**
+   * Renders the x-axis of the coordinate system in the specified graphics window.
+   *
+   * @param window the graphics window in which to render the x-axis
+   */
   private void renderXaxis(GWindow window) {
     final int TEN = 10;
     final int SIXTEEN = 16;
@@ -74,6 +128,11 @@ public class CoordinateSystem {
     drawLine(x1, y1, x2, y2, CYAN, false, window);
   }
 
+  /**
+   * Renders the y-axis of the coordinate system in the specified graphics window.
+   *
+   * @param window the graphics window in which to render the y-axis
+   */
   private void renderYaxis(GWindow window) {
     final int TWELVE = 12;
     final int FIVE = 5;
@@ -88,12 +147,19 @@ public class CoordinateSystem {
     drawLine(x1, y1, x2, y2, PINK, true, window);
   }
 
+  /**
+   * Renders the coordinate system with animated growth of the axes in the
+   * specified graphics window.
+   *
+   * @param window the graphics window in which to render the coordinate system
+   */
   public void render(GWindow window) {
     renderXaxis(window);
     // new thread to create the x and y axis in paralel
     renderYaxis(window);
   }
 
+  // Private members
   private final Color CYAN = new Color(4, 101, 138);
   private final Color PINK = new Color(127, 16, 154);
   private int centerX;

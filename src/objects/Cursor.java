@@ -1,23 +1,54 @@
 package objects;
 
+/**
+ * The Cursor class represents a graphical cursor with a base and a triangular top.
+ * It provides methods to set the properties of the cursor, such as width and position,
+ * render it in a graphics window, move it, and animate its movement.
+ * 
+ * The cursor is composed of a base and a triangular top, both drawn with pixel lines, rectangles, and triangles.
+ * The cursor can be moved and animated for a smooth transition.
+ * 
+ * @author [Your Name]
+ * @version 1.0
+ */
 import java.awt.Color;
+
 import utils.PixelLine;
 import uwcse.graphics.GWindow;
 import uwcse.graphics.Rectangle;
 import uwcse.graphics.Triangle;
 
 public class Cursor {
+  /**
+   * Constructs a new cursor with the specified width and position.
+   *
+   * @param width the width of the cursor
+   * @param posX  the x-coordinate of the cursor's position
+   * @param posY  the y-coordinate of the cursor's position
+   */
   public Cursor(int width, int posX, int posY) {
     this.width = width;
     this.posX = posX;
     this.posY = posY;
   }
 
+  /**
+   * Increments the index for the pixel lines array.
+   *
+   * @return the incremented index
+   */
   private int indexAcum() {
     indexLine++;
     return indexLine;
   }
 
+  /**
+   * Draws the base of the cursor with pixel lines and rectangles.
+   *
+   * @param baseHeigth the height of the base
+   * @param baseWidth  the width of the base
+   * @param blockSide  the side length of a block
+   */
   private void cursorBase(int baseHeigth, int baseWidth, int blockSide) {
     final int BASE_BLOCKS = 3;
     final int TWO = 2;
@@ -40,6 +71,12 @@ public class Cursor {
     }
   }
 
+  /**
+   * Draws the top of the cursor with pixel lines and triangles.
+   *
+   * @param blockSide   the side length of a block
+   * @param triangleTop the top length of the triangular part
+   */
   private void cursorTop(int blockSide, int triangleTop) {
     final int BORDER = width / 20;
     final int SEVEN = 7;
@@ -59,10 +96,20 @@ public class Cursor {
     }
   }
 
+  /**
+   * Sets the graphics window for rendering the cursor.
+   *
+   * @param window the graphics window
+   */
   public void setWindow(GWindow window) {
     this.window = window;
   }
 
+  /**
+   * Adds the cursor to the specified graphics window.
+   *
+   * @param window the graphics window to add the cursor to
+   */
   public void addTo(GWindow window) {
     final int EIGHTEEN = 18;
     final int TWELVE = 12;
@@ -71,6 +118,12 @@ public class Cursor {
     cursorBase(width / EIGHTEEN, width / TWELVE, width / EIGHTEEN);
   };
 
+  /**
+   * Moves the cursor by the specified delta values.
+   *
+   * @param deltaX the change in the x-coordinate
+   * @param deltaY the change in the y-coordinate
+   */
   public void moveBy(int deltaX, int deltaY) {
     final int FIVE = 5;
     final int THIRTY = 30;
@@ -80,6 +133,14 @@ public class Cursor {
       triangles[i].moveTo(deltaX + FIVE, deltaY + FIVE);
     rec.moveTo(deltaX + THIRTY, deltaY + THIRTY);
   }
+
+  /**
+   * Animates the movement of the cursor with a specified number of key frames.
+   *
+   * @param keyFrames the number of key frames for the animation
+   * @param deltaX    the change in the x-coordinate for each frame
+   * @param deltaY    the change in the y-coordinate for each frame
+   */
 
   public void animate(int keyFrames, int deltaX, int deltaY) {
     for (int i = 0; i <= keyFrames; i++) {

@@ -1,19 +1,41 @@
 package scenes;
 
-import objects.TrigonometricCirunference;
-import utils.Picture;
-import uwcse.graphics.GWindow;
 import java.awt.Color;
 
 import objects.Angle;
 import objects.Bracket;
 import objects.CoordinateSystem;
 import objects.Straight;
+import objects.TrigonometricCirunference;
+import utils.Picture;
+import uwcse.graphics.GWindow;
 
+/**
+ * The SecondScene class represents the second scene of an application.
+ * It provides methods for setting up and playing the second scene, including
+ * creating and rendering objects such as a coordinate system, trigonometric
+ * circumference,
+ * angles, brackets, and a straight line.
+ * * @author Facundo Garay
+ * 
+ * @version 1.0
+ */
 public class SecondScene {
+
+  /**
+   * Constructs a SecondScene object.
+   */
   public SecondScene() {
   }
 
+  /**
+   * Renders the hypotenuse of a right-angled triangle on the specified graphics
+   * window.
+   *
+   * @param centerX The x-coordinate of the center point.
+   * @param centerY The y-coordinate of the center point.
+   * @param window  The graphics window to render the hypotenuse.
+   */
   private void renderHypotenuse(int centerX, int centerY, GWindow window) {
     final double FOUR = 4;
     final double ANGLE = Math.PI / FOUR;
@@ -24,12 +46,23 @@ public class SecondScene {
     hypotenuse.render(window);
   }
 
+  /**
+   * Creates primary objects such as a coordinate system and a trigonometric
+   * circumference.
+   *
+   * @param window The graphics window to render the objects.
+   */
   private void createPrimaryObjects(GWindow window) {
     cSystem = new CoordinateSystem(COORDINATE_SYSTEM_DIMENSIONS[X], COORDINATE_SYSTEM_DIMENSIONS[Y]);
     circumference = new TrigonometricCirunference(CIRCUNFERENCE_DIMENSIONS[X],
         CIRCUNFERENCE_DIMENSIONS[Y]);
   }
 
+  /**
+   * Creates secondary objects such as brackets, angles, and pictures.
+   *
+   * @param window The graphics window to render the objects.
+   */
   private void createSecondaryObjects(GWindow window) {
     bracket = new Bracket(cSystem.getCenterX(), cSystem.getCenterY() + DELTA_Y, cSystem.getCenterX() + RADIUS,
         cSystem.getCenterY() + DELTA_Y, false, false, Color.white);
@@ -39,6 +72,12 @@ public class SecondScene {
 
   }
 
+  /**
+   * Plays the second scene, rendering primary and secondary objects on the
+   * specified graphics window.
+   *
+   * @param window The graphics window to display the scene.
+   */
   public void play(GWindow window) {
     createPrimaryObjects(window);
     cSystem.render(window);

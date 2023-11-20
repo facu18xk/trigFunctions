@@ -1,16 +1,34 @@
 package scenes;
 
-import uwcse.graphics.GWindow;
-import utils.Picture;
 import objects.Cursor;
 import objects.Window;
+import utils.Picture;
+/**
+ * The FirstScene class represents the initial scene of an application.
+ * It provides methods for setting up and playing the first scene, including
+ * displaying background images, creating and animating a cursor, and maximizing a window.
+ * @author Facundo Garay
+ * @version 1.0
+ */
+import uwcse.graphics.GWindow;
 
+/**
+ * Constructs a FirstScene object with the specified width and height.
+ *
+ * @param width  The width of the scene.
+ * @param height The height of the scene.
+ */
 public class FirstScene {
   public FirstScene(int width, int heigth) {
     this.heigth = heigth;
     this.width = width;
   }
 
+  /**
+   * Displays the background of the next scene after a delay.
+   *
+   * @param window The graphics window to display the background.
+   */
   private void nextSceneBackground(GWindow window) {
     final int DELAY = 700;// in ms
     try {
@@ -21,6 +39,13 @@ public class FirstScene {
     }
   }
 
+  /**
+   * Plays the first scene, setting up background images, creating and animating a
+   * cursor,
+   * and maximizing a window.
+   *
+   * @param window The graphics window to display the scene.
+   */
   public void play(GWindow window) {
     Picture background = new Picture("background1.png", width, heigth, window);
     background.add(0, 0);
@@ -34,7 +59,7 @@ public class FirstScene {
     nextSceneBackground(window);
   }
 
-  // Factors finded with the pythagorean theorem the 13 is the increment in the
+  // Factors found with the pythagorean theorem; 13 is the increment in the
   // x axis and 3 in the y axis
   final int X_INCREMENT = 13;
   final int Y_INCREMENT = 3;

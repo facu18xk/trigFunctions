@@ -3,12 +3,35 @@ package scenes;
 import objects.TrigonometricFunctions;
 import uwcse.graphics.GWindow;
 
+/**
+ * The ThirdScene class represents the third scene of an application.
+ * It provides methods for setting up and playing the third scene, which
+ * involves
+ * displaying trigonometric functions (sin, cos, tan, sec, cosec, cotan) with
+ * specified parameters and coordinates.
+ * 
+ * @author Facundo Garay
+ * @version 1.0
+ */
 public class ThirdScene {
+  /**
+   * Constructs a ThirdScene object with the specified height and width.
+   *
+   * @param height The height of the scene.
+   * @param width  The width of the scene.
+   */
   public ThirdScene(int height, int width) {
     centerX = width / TWO;
     centerY = height / TWO;
   }
 
+  /**
+   * Plays the third scene, displaying trigonometric functions with specified
+   * parameters
+   * and coordinates on the specified graphics window.
+   *
+   * @param window The graphics window to display the scene.
+   */
   public void play(GWindow window) {
     TrigonometricFunctions trigFunctions = new TrigonometricFunctions(centerX, centerY, window);
     trigFunctions.sin(ANGLE, RADIUS, WIDTH_IMG, HEIGHT_IMG, SIN_COORDINATES[DELTA_X],

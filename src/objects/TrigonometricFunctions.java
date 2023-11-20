@@ -1,19 +1,46 @@
 package objects;
 
+import java.awt.Color;
+
 import utils.Picture;
 import uwcse.graphics.GWindow;
 import uwcse.graphics.Rectangle;
 import uwcse.graphics.Triangle;
 
-import java.awt.Color;
-
+/**
+ * This class represents a set of trigonometric functions, including cosine,
+ * sine,
+ * tangent, secant, cosecant, and cotangent. It provides methods to visualize
+ * these
+ * functions on a graphics window.
+ * 
+ * @author Facundo Garay
+ * @version 1.0
+ */
 public class TrigonometricFunctions {
+
+  /**
+   * Constructs a TrigonometricFunctions object with the specified coordinates and
+   * window.
+   *
+   * @param x      The x-coordinate of the starting point.
+   * @param y      The y-coordinate of the starting point.
+   * @param window The graphics window to render the trigonometric functions.
+   */
   public TrigonometricFunctions(int x, int y, GWindow window) {
     this.window = window;
     this.x = x;
     this.y = y;
   }
 
+  /**
+   * Renders and returns the coordinates of the hypotenuse for the tangent
+   * function.
+   *
+   * @param radius The radius of the circle.
+   * @return An array containing the coordinates [x1, y1, x2, y2] of the
+   *         hypotenuse.
+   */
   private int[] renderHypotenuse(int radius) {
     int[] coordinates = new int[4];
     // PI / 4 radians it's equal to 45 degrees
@@ -28,6 +55,16 @@ public class TrigonometricFunctions {
 
   }
 
+  /**
+   * Visualizes the cosine function on the graphics window.
+   *
+   * @param angle  The angle in radians.
+   * @param radius The radius of the circle.
+   * @param width  The width of the rectangle representing the cosine value.
+   * @param height The height of the rectangle representing the cosine value.
+   * @param deltaX The x-offset for displaying the image.
+   * @param deltaY The y-offset for displaying the image.
+   */
   public void cos(double angle, int radius, int width, int height, int deltaX, int deltaY) {
     int cosValue = (int) (Math.cos(angle) * radius);
     cos = new Rectangle(x, y, cosValue, RECTANGLE_SIDE, PINK, true);
@@ -44,6 +81,16 @@ public class TrigonometricFunctions {
     cosImg.removeFromWindow();
   }
 
+  /**
+   * Visualizes the sine function on the graphics window.
+   *
+   * @param angle  The angle in radians.
+   * @param radius The radius of the circle.
+   * @param width  The width of the rectangle representing the sine value.
+   * @param height The height of the rectangle representing the sine value.
+   * @param deltaX The x-offset for displaying the image.
+   * @param deltaY The y-offset for displaying the image.
+   */
   public void sin(double angle, int radius, int width, int height, int deltaX, int deltaY) {
     int sinValue = (int) (Math.sin(angle) * radius);
     int posX = (int) (Math.cos(angle) * radius) + x;
@@ -61,6 +108,15 @@ public class TrigonometricFunctions {
     sinImg.removeFromWindow();
   }
 
+  /**
+   * Visualizes the tangent function on the graphics window.
+   *
+   * @param radius The radius of the circle.
+   * @param width  The width of the image representing the tangent function.
+   * @param height The height of the image representing the tangent function.
+   * @param deltaX The x-offset for displaying the image.
+   * @param deltaY The y-offset for displaying the image.
+   */
   public void tangent(int radius, int width, int height, int deltaX, int deltaY) {
     coordinates = renderHypotenuse(radius);
     try {
@@ -80,6 +136,15 @@ public class TrigonometricFunctions {
     triangle.removeFromWindow();
   }
 
+  /**
+   * Visualizes the secant function on the graphics window.
+   *
+   * @param radius The radius of the circle.
+   * @param width  The width of the image representing the secant function.
+   * @param height The height of the image representing the secant function.
+   * @param deltaX The x-offset for displaying the image.
+   * @param deltaY The y-offset for displaying the image.
+   */
   public void sec(int radius, int width, int height, int deltaX, int deltaY) {
     int x2 = (int) (Math.cos(ANGLE) * radius * TWO) + x;
     secImg = new Picture("sec.png", width, height, window);
@@ -95,6 +160,15 @@ public class TrigonometricFunctions {
     ;
   }
 
+  /**
+   * Visualizes the cosecant function on the graphics window.
+   *
+   * @param radius The radius of the circle.
+   * @param width  The width of the image representing the cosecant function.
+   * @param height The height of the image representing the cosecant function.
+   * @param deltaX The x-offset for displaying the image.
+   * @param deltaY The y-offset for displaying the image.
+   */
   public void cosec(int radius, int width, int heigth, int deltaX, int deltaY) {
     int x2 = x;
     int y2 = (int) (y - Math.cos(ANGLE) * radius * TWO);
@@ -108,11 +182,20 @@ public class TrigonometricFunctions {
     triangle.addTo(window);
   }
 
+  /**
+   * Visualizes the cotangent function on the graphics window.
+   *
+   * @param width  The width of the image representing the cotangent function.
+   * @param height The height of the image representing the cotangent function.
+   * @param deltaX The x-offset for displaying the image.
+   * @param deltaY The y-offset for displaying the image.
+   */
   public void cotan(int width, int height, int deltaX, int deltaY) {
     Picture cotanImg = new Picture("cotan.png", width, height, window);
     cotanImg.add(deltaX + x, deltaY + y);
   }
 
+  // Private members and constants
   private int coordinates[];
   private final double ANGLE = Math.PI / 4;
   private Straight hypotenuse;

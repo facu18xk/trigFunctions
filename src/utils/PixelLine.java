@@ -3,7 +3,32 @@ package utils;
 import uwcse.graphics.GWindow;
 import uwcse.graphics.Rectangle;
 
+/**
+ * The PixelLine class represents a line of rectangular blocks in a pixel art
+ * style.
+ * It provides methods for adding the line to a graphics window, moving the line
+ * by a specified offset,
+ * and handling the rendering and removal of the rectangular blocks.
+ * 
+ * @author Facundo Garay
+ * 
+ * @version 1.0
+ */
 public class PixelLine {
+  /**
+   * Constructs a PixelLine object with the specified parameters.
+   *
+   * @param x           The x-coordinate of the starting point.
+   * @param y           The y-coordinate of the starting point.
+   * @param lineLength  The number of blocks in the line.
+   * @param blockWidth  The width of each block.
+   * @param blockHeight The height of each block.
+   * @param descendent  A boolean indicating the slope direction (ascending or
+   *                    descending).
+   * @param color       The color of the blocks.
+   * @param fill        A boolean indicating whether the blocks should be filled
+   *                    with color.
+   */
   public PixelLine(int x, int y, int lineLength, int blockWidth, int blockHeigth, boolean descendent,
       java.awt.Color color, boolean fill) {
     this.x = x;

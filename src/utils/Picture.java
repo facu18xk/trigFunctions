@@ -1,14 +1,25 @@
 package utils;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Graphics2D;
+
 import javax.imageio.ImageIO;
+
 import uwcse.graphics.GWindow;
 import uwcse.graphics.ImageShape;
 
+/**
+ * The Picture class represents an image that can be displayed in a graphics
+ * window.
+ * It provides methods for creating, adding, rotating, and removing the image.
+ * 
+ * @author Facundo Garay
+ * 
+ * @version 1.0
+ */
 public class Picture {
 	/**
 	 * Creates a picture object

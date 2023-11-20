@@ -1,16 +1,44 @@
 package objects;
 
 import java.awt.Color;
+
 import uwcse.graphics.Arc;
 import uwcse.graphics.GWindow;
 
+/**
+ * The TrigonometricCirunference class represents the rendering of a
+ * trigonometric
+ * circumference in a graphics window. It provides methods to draw and animate
+ * the circumference.
+ * 
+ * The circumference is drawn using arcs with a specified width and height. The
+ * rendering includes
+ * an animation effect, gradually revealing the circumference in the specified
+ * graphics window.
+ * 
+ * @author Facundo Garay
+ * @version 1.0
+ */
 public class TrigonometricCirunference {
 
+  /**
+   * Constructs a new trigonometric circumference with the specified width and
+   * height.
+   *
+   * @param width  the width of the circumference
+   * @param height the height of the circumference
+   */
   public TrigonometricCirunference(int width, int height) {
     this.width = width;
     this.height = height;
   }
 
+  /**
+   * Draws and animates the trigonometric circumference in the specified graphics
+   * window.
+   *
+   * @param window the graphics window in which to render the circumference
+   */
   private void drawCircunference(GWindow window) {
     final int KEY_FRAMES = 150;
     final int TWO = 2;
@@ -35,6 +63,11 @@ public class TrigonometricCirunference {
     }
   }
 
+  /**
+   * Renders the trigonometric circumference in the specified graphics window.
+   *
+   * @param window the graphics window in which to render the circumference
+   */
   public void render(GWindow window) {
     drawCircunference(window);
   }
